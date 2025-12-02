@@ -93,11 +93,11 @@
 }
 
 .nav-logo {
-  font-family: var(--font-display);
+  font-family: var(--font-logo);
   font-size: 1.8rem;
   letter-spacing: 0.3em;
   color: var(--color-gold);
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .nav-links {
@@ -204,11 +204,13 @@
 }
 
 .hero-title {
+  font-family: var(--font-logo);
   font-size: clamp(4rem, 12vw, 8rem);
   line-height: 0.9;
   letter-spacing: 0.2em;
   margin-bottom: 2rem;
   color: var(--color-cream);
+  font-weight: 300;
 }
 
 .hero-title span {
@@ -343,108 +345,39 @@
   padding: var(--spacing-xl) 0;
 }
 
-.collections-header {
+.collections-content-centered {
+  max-width: 900px;
+  margin: 0 auto;
   text-align: center;
-  margin-bottom: 4rem;
 }
 
-.collections-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+.collections-content-centered h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
   margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
-.collections-subtitle {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 1.2rem;
-  color: var(--color-gold-pale);
-  font-weight: 300;
-}
-
-.collections-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.collection-card {
-  position: relative;
-  padding: 3rem 2rem;
-  background: rgba(10, 10, 10, 0.8);
-  border: 1px solid rgba(201, 162, 39, 0.15);
-  cursor: pointer;
-  transition: all var(--transition-medium);
+.collections-features {
   display: flex;
   flex-direction: column;
-  min-height: 320px;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  text-align: left;
 }
 
-.collection-card:hover {
-  border-color: rgba(201, 162, 39, 0.4);
-  background: rgba(15, 15, 15, 0.9);
-}
-
-.collection-number {
-  font-family: var(--font-display);
-  font-size: 3rem;
-  letter-spacing: 0.1em;
-  color: var(--color-gold);
-  opacity: 0.3;
-  margin-bottom: 2rem;
-  transition: opacity var(--transition-medium);
-}
-
-.collection-card:hover .collection-number {
-  opacity: 0.6;
-}
-
-.collection-name {
-  font-size: 1.5rem;
-  letter-spacing: 0.15em;
-  margin-bottom: 1rem;
-  transition: color var(--transition-medium);
-}
-
-.collection-card:hover .collection-name {
-  color: var(--color-gold);
-}
-
-.collection-description {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: var(--color-cream-dark);
-  flex: 1;
-  opacity: 1;
-}
-
-.collection-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-display);
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  color: var(--color-gold);
-  margin-top: 2rem;
-  opacity: 0.6;
+.collection-feature {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 2rem;
+  background: rgba(10, 10, 10, 0.6);
+  border: 1px solid rgba(201, 162, 39, 0.1);
   transition: all var(--transition-medium);
 }
 
-.collection-card:hover .collection-link {
-  opacity: 1;
-}
-
-.collection-link::after {
-  content: '';
-  width: 20px;
-  height: 1px;
-  background: var(--color-gold);
-  transition: width var(--transition-fast);
-}
-
-.collection-card:hover .collection-link::after {
-  width: 40px;
+.collection-feature:hover {
+  border-color: rgba(201, 162, 39, 0.3);
+  background: rgba(15, 15, 15, 0.7);
 }
 
 /* ========================================
@@ -477,9 +410,6 @@
 }
 
 .craft-feature {
-  display: flex;
-  gap: 2rem;
-  align-items: flex-start;
   padding: 2rem;
   background: rgba(10, 10, 10, 0.6);
   border: 1px solid rgba(201, 162, 39, 0.1);
@@ -489,15 +419,6 @@
 .craft-feature:hover {
   border-color: rgba(201, 162, 39, 0.3);
   background: rgba(15, 15, 15, 0.7);
-}
-
-.feature-number {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  letter-spacing: 0.2em;
-  color: var(--color-gold);
-  padding-top: 0.2rem;
-  min-width: 40px;
 }
 
 .feature-content h4 {
@@ -686,10 +607,11 @@
 }
 
 .footer-logo {
-  font-family: var(--font-display);
+  font-family: var(--font-logo);
   font-size: 2rem;
   letter-spacing: 0.3em;
   color: var(--color-gold);
+  font-weight: 300;
 }
 
 .footer-tagline {
@@ -764,10 +686,6 @@
     gap: 4rem;
   }
 
-  .collections-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .hero-content {
     max-width: 90%;
   }
@@ -798,18 +716,9 @@
     flex-wrap: wrap;
   }
 
-  .collections-grid {
-    grid-template-columns: 1fr;
-  }
-
+  .collection-feature,
   .craft-feature {
-    flex-direction: column;
-    gap: 1rem;
     text-align: center;
-  }
-
-  .feature-number {
-    min-width: auto;
   }
 
   .form-row {
@@ -854,9 +763,9 @@
     padding: 2rem 1.5rem;
   }
 
-  .collection-card {
-    padding: 2rem 1.5rem;
-    min-height: 280px;
+  .collection-feature,
+  .craft-feature {
+    padding: 1.5rem;
   }
 }
 

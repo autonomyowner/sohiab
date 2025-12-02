@@ -111,7 +111,7 @@ function Navbar() {
       </ul>
 
       <div className="nav-social">
-        <a href="#" aria-label="Instagram">IG</a>
+        <a href="https://www.instagram.com/koroko.sohaib/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
         <a href="#" aria-label="Facebook">FB</a>
       </div>
 
@@ -245,19 +245,16 @@ function Collections() {
 
   const collections = [
     {
-      number: "01",
-      name: "Robes de Soirée",
-      description: "Élégance raffinée pour vos moments d'exception"
+      title: "Robes de Soirée",
+      description: "Élégance raffinée pour vos moments d'exception, chaque robe est une œuvre unique conçue pour sublimer votre silhouette."
     },
     {
-      number: "02",
-      name: "Caftans",
-      description: "L'héritage algérien sublimé par la broderie dorée"
+      title: "Caftans",
+      description: "L'héritage algérien sublimé par la broderie dorée, alliant tradition ancestrale et modernité contemporaine."
     },
     {
-      number: "03",
-      name: "Sur Mesure",
-      description: "Votre vision, notre savoir-faire"
+      title: "Sur Mesure",
+      description: "Votre vision, notre savoir-faire. Une création entièrement personnalisée selon vos désirs et vos mesures."
     }
   ]
 
@@ -265,36 +262,36 @@ function Collections() {
     <section id="collections" className="collections" ref={ref}>
       <div className="container">
         <motion.div
-          className="collections-header"
-          variants={fadeInUp}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          <h2 className="collections-title">Collections</h2>
-          <p className="collections-subtitle">Des créations uniques pour des femmes d'exception</p>
-          <div className="divider"></div>
-        </motion.div>
-
-        <motion.div
-          className="collections-grid"
+          className="collections-content-centered"
           variants={staggerContainer}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {collections.map((collection, index) => (
-            <motion.div
-              key={index}
-              className="collection-card"
-              variants={scaleIn}
-              whileHover={{ y: -10, borderColor: 'rgba(201, 162, 39, 0.5)' }}
-              transition={{ duration: 0.3 }}
-            >
-              <span className="collection-number">{collection.number}</span>
-              <h3 className="collection-name">{collection.name}</h3>
-              <p className="collection-description">{collection.description}</p>
-              <span className="collection-link">Explorer</span>
-            </motion.div>
-          ))}
+          <motion.span className="section-label" variants={fadeInUp}>
+            Collections
+          </motion.span>
+
+          <motion.h2 variants={fadeInUp}>
+            Des créations uniques pour des<br />
+            <span className="gold-text">femmes d'exception</span>
+          </motion.h2>
+
+          <motion.div className="divider" variants={fadeIn}></motion.div>
+
+          <div className="collections-features">
+            {collections.map((collection, index) => (
+              <motion.div
+                key={index}
+                className="collection-feature"
+                variants={fadeInUp}
+              >
+                <div className="feature-content">
+                  <h4>{collection.title}</h4>
+                  <p>{collection.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
@@ -308,17 +305,14 @@ function Craftsmanship() {
 
   const features = [
     {
-      number: "I",
       title: "Broderie Main",
       description: "Chaque point est réalisé à la main, perpétuant un savoir-faire ancestral transmis de génération en génération."
     },
     {
-      number: "II",
       title: "Matières Nobles",
       description: "Fils d'or, soies naturelles et perles sélectionnées pour leur qualité exceptionnelle."
     },
     {
-      number: "III",
       title: "Sur Mesure",
       description: "Une création unique, adaptée à vos mesures et vos désirs pour une silhouette parfaite."
     }
@@ -351,7 +345,6 @@ function Craftsmanship() {
                 className="craft-feature"
                 variants={fadeInUp}
               >
-                <span className="feature-number">{feature.number}</span>
                 <div className="feature-content">
                   <h4>{feature.title}</h4>
                   <p>{feature.description}</p>
@@ -412,7 +405,18 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
+    const whatsappNumber = '213796219708'
+    const message = `Bonjour KOROKO,
+
+Nom: ${formData.name}
+Email: ${formData.email}
+Téléphone: ${formData.phone}
+Sujet: ${formData.subject}
+
+Message:
+${formData.message}`
+    const encodedMessage = encodeURIComponent(message)
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank')
   }
 
   const handleChange = (e) => {
@@ -456,7 +460,7 @@ function Contact() {
               <div className="contact-item">
                 <span className="contact-label">Téléphone</span>
                 <span className="contact-value">
-                  <a href="tel:+213000000000">+213 00 00 00 00</a>
+                  <a href="tel:+213796219708">+213 796 21 97 08</a>
                 </span>
               </div>
               <div className="contact-item">
@@ -574,7 +578,7 @@ function Footer() {
           </div>
 
           <div className="footer-social">
-            <a href="#" aria-label="Instagram">IG</a>
+            <a href="https://www.instagram.com/koroko.sohaib/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
             <a href="#" aria-label="Facebook">FB</a>
             <a href="#" aria-label="Pinterest">PN</a>
           </div>
