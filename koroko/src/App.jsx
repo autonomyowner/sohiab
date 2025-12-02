@@ -406,15 +406,13 @@ function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const whatsappNumber = '213796219708'
-    const message = `Bonjour KOROKO,
+    let message = `Bonjour KOROKO,
 
 Nom: ${formData.name}
-Email: ${formData.email}
-Téléphone: ${formData.phone}
-Sujet: ${formData.subject}
-
-Message:
-${formData.message}`
+Téléphone: ${formData.phone}`
+    if (formData.email) message += `\nEmail: ${formData.email}`
+    if (formData.subject) message += `\nSujet: ${formData.subject}`
+    if (formData.message) message += `\n\nMessage:\n${formData.message}`
     const encodedMessage = encodeURIComponent(message)
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank')
   }
@@ -499,7 +497,6 @@ ${formData.message}`
                     placeholder="Votre email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
                   />
                 </div>
               </div>
@@ -514,6 +511,7 @@ ${formData.message}`
                     placeholder="Votre téléphone"
                     value={formData.phone}
                     onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="form-group">
@@ -525,7 +523,6 @@ ${formData.message}`
                     placeholder="Sur mesure, robe de soirée..."
                     value={formData.subject}
                     onChange={handleChange}
-                    required
                   />
                 </div>
               </div>
@@ -539,7 +536,6 @@ ${formData.message}`
                   placeholder="Décrivez votre projet ou posez-nous vos questions..."
                   value={formData.message}
                   onChange={handleChange}
-                  required
                 ></textarea>
               </div>
 
