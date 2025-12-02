@@ -1,0 +1,5 @@
+{
+  "buildCommand": "cd koroko && npm install && npm run build",
+  "outputDirectory": "koroko/dist",
+  "installCommand": "cd koroko && npm install"
+}
