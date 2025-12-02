@@ -116,13 +116,13 @@ function Navbar() {
       </div>
 
       <button
-        className="mobile-menu-btn"
+        className={`mobile-menu-btn ${mobileMenuOpen ? 'active' : ''}`}
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         aria-label="Menu"
       >
-        <span></span>
-        <span></span>
-        <span></span>
+        <span className="needle needle-1"></span>
+        <span className="needle needle-2"></span>
+        <span className="needle needle-3"></span>
       </button>
     </motion.nav>
   )

@@ -148,22 +148,166 @@
   color: var(--color-gold);
 }
 
-/* Mobile Menu */
+/* Mobile Menu - Needle Infinity Animation */
 .mobile-menu-btn {
   display: none;
-  flex-direction: column;
-  gap: 5px;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 5px;
+  padding: 8px;
+  position: relative;
+  z-index: 1001;
 }
 
-.mobile-menu-btn span {
-  width: 25px;
-  height: 1px;
+/* Needle lines with dot at the tip */
+.mobile-menu-btn .needle {
+  display: block;
+  position: absolute;
+  width: 26px;
+  height: 1.5px;
   background: var(--color-gold);
-  transition: all var(--transition-fast);
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.4s ease;
+  transform-origin: center;
+}
+
+/* Needle dot (eye of the needle) - only on needle 1 and 2 */
+.mobile-menu-btn .needle-1::after,
+.mobile-menu-btn .needle-2::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.4s ease;
+}
+
+.mobile-menu-btn .needle-1 {
+  top: 13px;
+}
+
+.mobile-menu-btn .needle-2 {
+  top: 21px;
+}
+
+.mobile-menu-btn .needle-3 {
+  top: 29px;
+}
+
+/* ===== ACTIVE STATE: Needle Infinity Animation ===== */
+
+/* Middle line disappears */
+.mobile-menu-btn.active .needle-2 {
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0);
+}
+
+/* Top needle - infinity loop animation */
+.mobile-menu-btn.active .needle-1 {
+  top: 21px;
+  animation: needleInfinity1 2.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* Bottom needle - infinity loop animation (offset) */
+.mobile-menu-btn.active .needle-3 {
+  top: 21px;
+  animation: needleInfinity2 2.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* Add dot to needle-3 when active */
+.mobile-menu-btn.active .needle-3::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Infinity figure-8 path for needle 1 */
+@keyframes needleInfinity1 {
+  0% {
+    transform: translateX(-50%) rotate(0deg) translateY(0px);
+  }
+  12.5% {
+    transform: translateX(-50%) rotate(45deg) translateY(-3px);
+  }
+  25% {
+    transform: translateX(-50%) rotate(90deg) translateY(0px);
+  }
+  37.5% {
+    transform: translateX(-50%) rotate(135deg) translateY(3px);
+  }
+  50% {
+    transform: translateX(-50%) rotate(180deg) translateY(0px);
+  }
+  62.5% {
+    transform: translateX(-50%) rotate(225deg) translateY(-3px);
+  }
+  75% {
+    transform: translateX(-50%) rotate(270deg) translateY(0px);
+  }
+  87.5% {
+    transform: translateX(-50%) rotate(315deg) translateY(3px);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg) translateY(0px);
+  }
+}
+
+/* Infinity figure-8 path for needle 2 (opposite direction, offset timing) */
+@keyframes needleInfinity2 {
+  0% {
+    transform: translateX(-50%) rotate(180deg) translateY(0px);
+  }
+  12.5% {
+    transform: translateX(-50%) rotate(225deg) translateY(3px);
+  }
+  25% {
+    transform: translateX(-50%) rotate(270deg) translateY(0px);
+  }
+  37.5% {
+    transform: translateX(-50%) rotate(315deg) translateY(-3px);
+  }
+  50% {
+    transform: translateX(-50%) rotate(360deg) translateY(0px);
+  }
+  62.5% {
+    transform: translateX(-50%) rotate(405deg) translateY(3px);
+  }
+  75% {
+    transform: translateX(-50%) rotate(450deg) translateY(0px);
+  }
+  87.5% {
+    transform: translateX(-50%) rotate(495deg) translateY(-3px);
+  }
+  100% {
+    transform: translateX(-50%) rotate(540deg) translateY(0px);
+  }
+}
+
+/* Hover effect - subtle golden glow */
+.mobile-menu-btn:hover .needle {
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.6));
+}
+
+.mobile-menu-btn:focus {
+  outline: none;
+}
+
+.mobile-menu-btn:focus-visible {
+  outline: 1px solid var(--color-gold);
+  outline-offset: 4px;
 }
 
 /* ========================================
